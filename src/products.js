@@ -41,9 +41,13 @@ $(document).ready(function () {
     var x = $("#os :selected").val();
     var y = $("#brand :selected").val();
     console.log(y);
+    console.log(x);
+    if (x == 'iOS' || x == 'Android' || x == 'Windows') {
     html = "<table><tr><th>ID</th><th>NAME</th><th>BRAND</th><th>OS</th><th>Remove</th></tr>";
     for (var i = 0; i < products.length; i++) {
-      if (products[i].os == x || products[i].brand == y) {
+      if (products[i].os ==x)
+      {
+        console.log("hiiiiiiiiiiii");
         html +=
           "<tr class='listRow'><td>" +
           products[i].id +
@@ -54,23 +58,39 @@ $(document).ready(function () {
           "</td><td>" +
           products[i].os +
           "</td><td><button id='button1'>Remove X</button></td></tr>";
+      }   
       }
-	  else if (products[i].os == x && products[i].brand == y)
-	  {
-		
-		alert("selected Operating system and branch not MATCHED");
-	  }
-	  else{
-		display(products);
-	  }
-	  
+      html += "</table>";
+      document.getElementById("display").innerHTML = html;
+      console.log(html);
+  }
+  else if(y=='Apple' || y=='Motorola' || y=='Samsung' || y=='ASUS' || y=='Microsoft' )
+  {
+    html = "<table><tr><th>ID</th><th>NAME</th><th>BRAND</th><th>OS</th><th>Remove</th></tr>";
+    for (var i = 0; i < products.length; i++) {
+      if (products[i].brand ==y)
+      {
+        console.log("hiiiiiiiiiiii");
+        html +=
+          "<tr class='listRow'><td>" +
+          products[i].id +
+          "</td><td>" +
+          products[i].name +
+          "</td><td>" +
+          products[i].brand +
+          "</td><td>" +
+          products[i].os +
+          "</td><td><button id='button1'>Remove X</button></td></tr>";
+      }   
+      }
+      html += "</table>";
+      document.getElementById("display").innerHTML = html;
+      console.log(html);
+  }
+  else {
+    display(products);
+  }
 	   
-	  html += "</table>";
-	  document.getElementById("display").innerHTML = html;
-	  
-	}
-
-	
   });
 });
 function display(products) {
@@ -90,15 +110,12 @@ function display(products) {
   }
   html += "</table>";
   document.getElementById("display").innerHTML = html;
-  console.log(html);
+  
 }
 $("#search2").click(function ()
 {
 	var val1 = $("#nameid :selected").val();
-	var val2 = document.getElementById("select1").value;
-	// console.log(val1=='Name');
-
-	
+	var val2 = document.getElementById("select1").value;	
 if(val1=='ID')
 {
 var val3=parseInt(val2);
